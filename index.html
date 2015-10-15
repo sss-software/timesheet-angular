@@ -1,0 +1,367 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Javascript | Timesheet Application</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- new styles zim -->
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
+   <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.css">
+    
+  
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.js"></script>
+
+  <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
+
+  <script type="text/javascript" src="js/lib/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css">
+
+  <script type="text/javascript" src="js/JobObject.js"></script>
+
+  <script type="text/javascript" src="js/timesheet_constructer.js"></script>
+
+
+</head>
+<body ng-app="myApp">
+
+<div id="testId"></div>
+
+  <!-- BEGIN COL 6 ROWS -->
+  <!-- <div class="row">
+    <section class="layout">
+      <div class="col-md-6">
+        <p>col 66</p>
+      </div>
+      <div class="col-md-6-end">
+        <p>col 6</p>
+      </div>
+    </section>
+  </div> -->
+
+  <!-- BEGIN COL 4 ROWS -->
+  <!-- <div class="row">
+    <section class="layout">
+      <div class="col-md-4">
+        <p>col 4</p>
+      </div>
+      <div class="col-md-4">
+        <p>col 4</p>
+      </div>
+      <div class="col-md-4-end">
+        <p>col 4</p>
+      </div>
+    </section>
+  </div> -->
+
+
+  <!-- <div id="result"></div> -->
+  <div id="header" class="row row-logo">
+    <section class="layout">
+
+      <div class="col-md-12">
+
+        <a href="home" title="link one" class="title">TIMESHEET APP ANGULAR</a>
+        
+      </div>
+
+      <div class="col-md-6 info-panel">
+
+        <a href="info.html" title="" class="linksite-main" target="_blank">INFORMATION/INSTRUCTIONS</a>
+        
+      </div>
+
+    </section>
+  </div>
+
+  <!-- TEMP TO DO ROW -->
+  <div class="row row-todo">
+
+    <section id="todoWrap" class="layout">
+
+
+      <div class="col-md-2" data-toggle="modal" data-target="#myModalTodo">TO DO</div>
+
+      <div class="modal fade" id="myModalTodo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1>TIMESHEET APP TO DO</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+
+            <div class="modal-body">
+
+              <ul class="todo-items-main">
+
+                <li>ADD PAGING FUNCTIONALITY:</li>
+
+                <li>RATIONALIZE CREATE SELECT LIST FUNCTIONS:</li>
+
+                <li>USE ANGULAR DIRECTIVES? ng-repeat etc??:</li>
+
+                <li>ADD JOB FORM:
+                  <ul>
+                    <li>Make start time start from 9am.</li>
+                    <li>Make finish time start at start time.</li>
+                  </ul>
+                </li>
+
+                <li>USE populate_week_range_options() FUNCTION TO CREATE FILTER FOR WEEK BEGINING AND CREATE REPORTS ETC:
+                  <ul>
+                    <li>Use Bootstrap Datepicker to choose date begining? HILIGHT MONDAYS ON WIDGET? IS THIS POSSIBLE?</li>
+                    <li>Yes it is with, daysOfWeekDisabled option. bootstrap datepicker options... http://stackoverflow.com/questions/10234153/limit-bootstrap-datepicker-to-weekdays-only</li>
+                    <li>https://www.google.co.uk/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20datetimepicker%20days%20of%20week%20disabled</li>
+                    <li>http://bootstrap-datepicker.readthedocs.org/en/latest/options.html</li>
+                  </ul>
+                </li>
+
+                <li>MAKE DAILY REPORTS:
+                  <ul>
+                    <li>Use Bootstrap Datepicker to choose days?</li>
+                    <li>Include all relevant information: jobs List (and data eg: times, duration, notes, number, client etc...)</li>
+                  </ul>
+                </li>
+                
+              </ul>
+
+            </div>
+
+            <div class="modal-footer">
+              ?? CREATE FORM ENTRY SYSTEM TO ADD TO TODO LIST HERE?<BR />
+               WOULD HAVE TO USE LOCAL STORAGE ALSO!!
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <!-- end row -->
+
+  <div class="row row-add-item">
+
+    <section id="addFormWrapper" class="layout">
+
+
+      <div class="col-md-2" data-toggle="modal" data-target="#myModal">ADD</div>
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1>ADD JOB FORM</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+
+            <div class="modal-body">
+
+              <label>Date</label>
+
+              <!-- <input type="date" class="" datepicker-popup is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" id="textboxDateadd" /> -->
+
+<!-- <input id="textboxDateadd"> -->
+<input type="DATE" name="myinputdate" id="textboxDateadd" datepicker-popup="null">
+
+              <div class="form-row">
+                <label>Client</label>
+                <input type="text" name="add_item_client" id="textboxClientadd">
+              </div>
+              <div class="form-row">
+                <label>Reference</label>
+                <input type="text" name="add_item_ref" id="textboxRefadd">
+              </div>
+              <div class="form-row">
+                <label>Number</label>
+                <input type="text" name="add_item_number" id="textboxNumberadd">
+              </div>
+              <div class="form-row">
+                <label>Start Time</label>
+                <input type="text" id="textboxJobStartadd" class="timepickernew" placeholder="Job Start" />
+              </div>
+              <div class="form-row">
+                <label>Finish Time</label>
+                <input type="text" id="textboxJobFinishadd" class="timepickernew" placeholder="Job Finish" />
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button id="submitAddItem" data-form="add" data-dismiss="modal">[ADD ITEM]</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <!-- end row -->
+
+  <div class="row row-add-item">
+
+    <section class="layout">
+
+      <div id="dateSelWrap" class="col-md-2"></div>
+
+      <div id="clientSelWrap" class="col-md-3"></div>
+
+      <div id="numberSelWrap" class="col-md-3"></div>
+
+    </section>
+
+  </div>
+  <!-- end row -->
+
+    <!-- <div class="row row-nav">
+        <section class="layout">
+                <div id="" class="col-md-12">FORM HERE</div>
+      </section>
+    </div> -->
+    
+    
+    
+      <!-- <div class="row row-headings">
+          <section class="layout">
+                 <div class="col-md-4 span-name"><p>Title</p></div>
+                 <div class="col-md-4"><p>Amount</p></div>
+                 <div class="col-md-4-end"><p>Payed</p></div>
+         </section>
+       </div> -->
+
+       <div class="row headers">
+
+        <div id="" class="layout job_wrap">
+          <div id="ctaSortDate" data-filter="date" class="col-md-2 span-client ctaSortFilter">DATE / TIMES</div>
+          <div id="ctaSortClient" data-filter="client" class="col-md-3 span-client ctaSortFilter">CLIENT</div>
+          <div id="ctaSortNumber" data-filter="number" class="col-md-3 span-number ctaSortFilter">JOB NUMBER</div>
+          <div class="col-md-4-end span-ref">JOB INFO</div>
+        </div>
+
+      </div> 
+
+      <div ng-controller="myCtrl">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+
+      </div>
+
+      <div ng-controller="myCtrlJobs">
+
+        <li ng-repeat="ref in jList">{{ref}} from {{number}}</li>
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+
+      </div>
+
+      
+      
+      <div id="timesheet_holder" class="row"></div> 
+
+
+      <!-- PAGING STUFF TESTS //-->
+      <!-- the input fields that will hold the variables we will use -->
+      <input type='hidden' id='current_page' />
+      <input type='hidden' id='show_per_page' />
+      
+      <!-- Content div. The child elements will be used for paginating(they don't have to be all the same,
+        you can use divs, paragraphs, spans, or whatever you like mixed together). '-->
+      <!-- <div id='content'>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Vestibulum consectetur ipsum sit amet urna euismod imperdiet aliquam urna laoreet.</p>
+        <p>Curabitur a ipsum ut elit porttitor egestas non vitae libero.</p>
+        <p>Pellentesque ac sem ac sem tincidunt euismod.</p>
+        <p>Duis hendrerit purus vitae nibh tincidunt bibendum.</p>
+        <p>Nullam in nisi sit amet velit placerat laoreet.</p>
+        <p>Vestibulum posuere ligula non dolor semper vel facilisis orci ultrices.</p>
+        <p>Donec tincidunt lorem et dolor fringilla ut bibendum lacus fringilla.</p>
+        <p>In non eros eu lacus vestibulum sodales.</p>
+        <p>Duis ultrices metus sit amet sem adipiscing sit amet blandit orci convallis.</p>
+        <p>Proin ullamcorper est vitae lorem mollis bibendum.</p>
+        <p>Maecenas congue fringilla enim, tristique laoreet tortor adipiscing eget.</p>
+        <p>Duis imperdiet metus et lorem venenatis nec porta libero porttitor.</p>
+        <p>Maecenas lacinia lectus ac nulla commodo lacinia.</p>
+        <p>Maecenas quis massa nisl, sed aliquet tortor.</p>
+        <p>Quisque porttitor tellus ut ligula mattis luctus.</p>
+        <p>In at mi dolor, at consectetur risus.</p>
+        <p>Etiam id erat ut lorem fringilla dictum.</p>
+        <p>Curabitur sagittis dolor ac nisi interdum sed posuere tellus commodo.</p>
+        <p>Pellentesque quis magna vitae quam malesuada aliquet.</p>
+        <p>Curabitur tempus tellus quis orci egestas condimentum.</p>
+        <p>Maecenas laoreet eros ac orci adipiscing pharetra.</p>
+        <p>Nunc non mauris eu nibh tincidunt iaculis.</p>
+        <p>Ut semper leo lacinia purus hendrerit facilisis.</p>
+        <p>Praesent et eros lacinia massa sollicitudin consequat.</p>
+        <p>Proin non mauris in sem iaculis iaculis vel sed diam.</p>
+        <p>Nunc quis quam pulvinar nibh volutpat aliquet eget in ante.</p>
+        <p>In ultricies dui id libero pretium ullamcorper.</p>
+        <p>Morbi laoreet metus vitae ipsum lobortis ultrices.</p>
+        <p>Donec venenatis egestas arcu, quis eleifend erat tempus ullamcorper.</p>
+        <p>Morbi nec leo non enim mollis adipiscing sed et dolor.</p>
+        <p>Cras non tellus enim, vel mollis diam.</p>
+        <p>Phasellus luctus quam id ligula commodo eu fringilla est cursus.</p>
+        <p>Ut luctus augue tortor, in volutpat enim.</p>
+        <p>Cras bibendum ante sed erat pharetra sodales.</p>
+        <p>Donec sollicitudin enim eu mi suscipit luctus posuere eros imperdiet.</p>
+        <p>Vestibulum mollis tortor quis ipsum suscipit in venenatis nulla fermentum.</p>
+        <p>Proin vehicula suscipit felis, vitae facilisis nulla bibendum ac.</p>
+        <p>Cras iaculis neque et orci suscipit id porta risus feugiat.</p>
+        <p>Suspendisse eget tellus purus, ac pulvinar enim.</p>
+        <p>Morbi hendrerit ultrices enim, ac rutrum felis commodo in.</p>
+        <p>Suspendisse sagittis mattis sem, sit amet faucibus nisl fermentum vitae.</p>
+        <p>Nulla sed purus et tellus convallis scelerisque.</p>
+        <p>Nam at justo ut ante consectetur faucibus.</p>
+        <p>Proin dapibus nisi a quam interdum lobortis.</p>
+        <p>Nunc ornare nisi sed mi vehicula eu luctus mauris interdum.</p>
+        <p>Mauris auctor suscipit tellus, at sodales nisi blandit sed.</p>
+
+      </div> -->
+
+      <!-- An empty div which will be populated using jQuery -->
+      <div id='page_navigation'></div>
+      <!-- END PAGING STUFF TESTS -->
+
+
+      <!-- scripts -->
+      <script src="js/lib/angular/angular.js"></script>
+      <script src="js/lib/angular/angular-route.js"></script>
+      <!-- bootstrap scripts -->
+      <script src="js/lib/bootstrap.min.js"></script>
+       <!-- <script src="js/lib/bootstrap/bootstrap-wysiwyg.js"></script> -->
+      <script type="text/javascript" src="js/script.js"></script>
+
+      <script src="http://localhost:35729/livereload.js"></script>
+      <!-- end scripts-->
+    </body>
+    </html>
