@@ -43,33 +43,7 @@
 
 <div id="testId"></div>
 
-  <!-- BEGIN COL 6 ROWS -->
-  <!-- <div class="row">
-    <section class="layout">
-      <div class="col-md-6">
-        <p>col 66</p>
-      </div>
-      <div class="col-md-6-end">
-        <p>col 6</p>
-      </div>
-    </section>
-  </div> -->
-
-  <!-- BEGIN COL 4 ROWS -->
-  <!-- <div class="row">
-    <section class="layout">
-      <div class="col-md-4">
-        <p>col 4</p>
-      </div>
-      <div class="col-md-4">
-        <p>col 4</p>
-      </div>
-      <div class="col-md-4-end">
-        <p>col 4</p>
-      </div>
-    </section>
-  </div> -->
-
+  
 
   <!-- <div id="result"></div> -->
   <div id="header" class="row row-logo">
@@ -276,7 +250,13 @@
 
       <div ng-controller="myCtrlJobs">
 
-        <li ng-repeat="ref in jList">{{ref}} from {{number}}</li>
+        <li ng-repeat="job in jList">{{job}}<br />
+
+          {{job.date + " " + job.client}}
+          {{job.ref + " " + job.number}}
+          {{job.jobstart + " " + job.jobfinish}}
+          {{job.active}}
+        </li>
 
       </div>
 
