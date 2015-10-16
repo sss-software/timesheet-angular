@@ -87,6 +87,27 @@ $(document).ready(function() {
 
 
 
+// ITEM EDIT STUFF?
+$(".btn-edit").click(function(e) {
+
+	console.log('$(".btn-edit").click(function(e) { ' + e);
+
+	console.log($(this));
+	console.log($(this).data("index"));
+
+	
+		
+	//var tmpFilterVal = this.dataset.filter;
+
+	
+
+	TimesheetMain.editItemForm($(this).data("index"));
+});
+// end button click
+
+
+
+
 	function populate_week_range_options(){
 
 	    var start_week_date = new Date(2015, 3-1, 2); // no queries exist before this

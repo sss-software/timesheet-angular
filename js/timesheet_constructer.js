@@ -103,14 +103,7 @@
 				    
 				});
 
-				app.controller('myCtrlJobs', function($scope) {
-
-					console.log('myCtrlJobs????');
-
-				    $scope.jList= retrievedObjectPassed;
-				    //$scope.lastName= "Doe";
-				    
-				});
+				
 
 
 				// INITIALIZE MAIN APP
@@ -165,6 +158,19 @@
 			// console.log(jobsList);
 			// console.log(show);
 
+
+			app.controller('myCtrlJobs', function($scope) {
+
+				console.log('myCtrlJobs????');
+
+			    $scope.jList= retrievedObjectPassed;
+			    //$scope.lastName= "Doe";
+
+			    console.log('$scope.jList = ' + $scope.jList);
+
+			    console.log('$scope.jList[5].client = ' + $scope.jList[5].client);
+			    
+			});
 
 
 			// HERE WE FILL OUR timesheetObjArray WITH OUR jobsList PASSED FROM LOCAL STORAGE
@@ -992,22 +998,22 @@
 	    var curEditItemParent;
 	    var tempForm;
 	    	
-	    function editItemForm(btnDomEl,show) {
+	    function editItemForm(btnDomEl) {
 			
 			console.log("curEditItemParent = " + curEditItemParent);
 			
 			if (curEditItemParent === undefined) {
 				console.log("undefined");
-				curEditItemParent = document.getElementById("job_wrap"+btnDomEl.dataset.index);
+				curEditItemParent = document.getElementById("job_wrap"+btnDomEl);
 				
 				createEditItemForm (btnDomEl);
 				
-				prevEditItemParent = document.getElementById("job_wrap"+btnDomEl.dataset.index);
+				prevEditItemParent = document.getElementById("job_wrap"+btnDomEl);
 				
 				
 			} else {
 				
-				curEditItemParent = document.getElementById("job_wrap"+btnDomEl.dataset.index);
+				curEditItemParent = document.getElementById("job_wrap"+btnDomEl);
 				
 				if(curEditItemParent===prevEditItemParent){
 					console.log('curEditItemParent===prevEditItemParent');
@@ -1030,7 +1036,7 @@
 						
 						createEditItemForm (btnDomEl);
 						
-						prevEditItemParent = document.getElementById("job_wrap"+btnDomEl.dataset.index);
+						prevEditItemParent = document.getElementById("job_wrap"+btnDomEl);
 						//editing=false;
 					}else{
 						
@@ -1038,7 +1044,7 @@
 						
 						createEditItemForm (btnDomEl);
 						
-						prevEditItemParent = document.getElementById("job_wrap"+btnDomEl.dataset.index);
+						prevEditItemParent = document.getElementById("job_wrap"+btnDomEl);
 					
 					}// end if(editing){
 				}
@@ -1048,13 +1054,15 @@
 
 	function createEditItemForm (btnDomEl) {
 
-		console.log("btnDomEl.dataset.index = " + btnDomEl.dataset.index);
+		console.log("btnDomEl = " + btnDomEl);
+
+		console.log("btnDomEl.dataset.index = " + btnDomEl);
 
 			// CREATE/OPEN TEMP FORM MODAL WRAPPER
 			tempFormWrap = document.createElement('div');
 
 			tempFormWrap.setAttribute('class',"modal fade");
-			tempFormWrap.setAttribute('id',"modal" + btnDomEl.dataset.index);
+			tempFormWrap.setAttribute('id',"modal" + btnDomEl);
 			tempFormWrap.setAttribute('tabindex','-1');
 
 			curEditItemParent.appendChild(tempFormWrap);
@@ -1107,10 +1115,10 @@
 			my_tbDate.type='DATE';
 			my_tbDate.name='myinputdate';
 			//my_tbDate.value='Date';
-			my_tbDate.value=timesheetObjArray[btnDomEl.dataset.index].getJobDate();
+			my_tbDate.value=timesheetObjArray[btnDomEl].getJobDate();
 
 
-			my_tbDate.setAttribute('id',"textboxDateadd" + btnDomEl.dataset.index);
+			my_tbDate.setAttribute('id',"textboxDateadd" + btnDomEl);
 			my_tbDate.setAttribute('datepicker-popup',null);
 			tempForm.appendChild(my_tbDate);
 
@@ -1118,32 +1126,32 @@
 			my_tbClient.type='TEXT';
 			my_tbClient.name='myinputclient';
 			//my_tbClient.value='Client';
-			my_tbClient.value=timesheetObjArray[btnDomEl.dataset.index].getJobClient();
-			my_tbClient.setAttribute('id',"textboxClientadd" + btnDomEl.dataset.index);
+			my_tbClient.value=timesheetObjArray[btnDomEl].getJobClient();
+			my_tbClient.setAttribute('id',"textboxClientadd" + btnDomEl);
 			tempForm.appendChild(my_tbClient);
 
 			var my_tbRef=document.createElement('INPUT');
 			my_tbRef.type='TEXT';
 			my_tbRef.name='myinputref';
 			//my_tbRef.value='Ref';
-			my_tbRef.value=timesheetObjArray[btnDomEl.dataset.index].getJobRef();
-			my_tbRef.setAttribute('id',"textboxRefadd" + btnDomEl.dataset.index);
+			my_tbRef.value=timesheetObjArray[btnDomEl].getJobRef();
+			my_tbRef.setAttribute('id',"textboxRefadd" + btnDomEl);
 			tempForm.appendChild(my_tbRef);
 
 			var my_tbNumber=document.createElement('INPUT');
 			my_tbNumber.type='TEXT';
 			my_tbNumber.name='myinputnumber';
 			//my_tbNumber.value='Number';
-			my_tbNumber.value=timesheetObjArray[btnDomEl.dataset.index].getJobNumber();
-			my_tbNumber.setAttribute('id',"textboxNumberadd" + btnDomEl.dataset.index);
+			my_tbNumber.value=timesheetObjArray[btnDomEl].getJobNumber();
+			my_tbNumber.setAttribute('id',"textboxNumberadd" + btnDomEl);
 			tempForm.appendChild(my_tbNumber);
 
 			var my_tbSt=document.createElement('INPUT');
 			my_tbSt.type='TEXT';
 			my_tbSt.name='myinputst';
 			//my_tbSt.value='Start Time';
-			my_tbSt.value=timesheetObjArray[btnDomEl.dataset.index].getJobStartTime();
-			my_tbSt.setAttribute('id',"textboxJobStartadd" + btnDomEl.dataset.index);
+			my_tbSt.value=timesheetObjArray[btnDomEl].getJobStartTime();
+			my_tbSt.setAttribute('id',"textboxJobStartadd" + btnDomEl);
 			my_tbSt.setAttribute('class','timepicker');
 			tempForm.appendChild(my_tbSt);
 
@@ -1151,8 +1159,8 @@
 			my_tbFt.type='TEXT';
 			my_tbFt.name='myinputft';
 			//my_tbFt.value='Finish Time';
-			my_tbFt.value=timesheetObjArray[btnDomEl.dataset.index].getJobFinishTime();
-			my_tbFt.setAttribute('id',"textboxJobFinishadd" + btnDomEl.dataset.index);
+			my_tbFt.value=timesheetObjArray[btnDomEl].getJobFinishTime();
+			my_tbFt.setAttribute('id',"textboxJobFinishadd" + btnDomEl);
 			my_tbFt.setAttribute('class','timepicker');
 			tempForm.appendChild(my_tbFt);
 
@@ -1177,8 +1185,8 @@
 			// SUBMIT BUTTON I FOOTER
 			var my_submit = document.createElement('button');
 			my_submit.id = "submit";
-			my_submit.innerHTML = "[SUBMIT" + btnDomEl.dataset.index + "]";
-			my_submit.setAttribute('data-form',btnDomEl.dataset.index);
+			my_submit.innerHTML = "[SUBMIT" + btnDomEl + "]";
+			my_submit.setAttribute('data-form',btnDomEl);
 			my_submit.setAttribute('data-dismiss','modal');
 			tempFormFooter.appendChild(my_submit);
 			
@@ -1190,7 +1198,7 @@
 		    }
 
 		    // on modal launch
-		    $('#modal' + btnDomEl.dataset.index).on('shown.bs.modal', function (e) {
+		    $('#modal' + btnDomEl).on('shown.bs.modal', function (e) {
 				  // do something...
 				  console.log('e= ' + e);
 				  console.log(e);
@@ -1206,7 +1214,7 @@
 
 
 			// 
-			$('#modal' + btnDomEl.dataset.index).on('hidden.bs.modal', function (e) {
+			$('#modal' + btnDomEl).on('hidden.bs.modal', function (e) {
 			  // do something...
 			  console.log('e= ' + e);
 			  console.log(e);
@@ -1512,6 +1520,13 @@
 			},
 			createJobFilter:function(filterVal){
 				createJobFilter(filterVal);
+			},
+			//editItemForm(btnDomEl,show)
+			editItemForm:function(btnDomEl){
+				editItemForm(btnDomEl);
+			},
+			createEditItemForm:function(btnDomEl){
+				createEditItemForm(btnDomEl);
 			}
 			
 		};// end return object
